@@ -671,9 +671,6 @@ Scope {
                 break;
             }
         }
-        if (activeText === "" && root.currentLyrics.length > 0) {
-            activeText = "🎵";
-        }
         root.currentLyricLine = activeText;
     }
 
@@ -698,9 +695,10 @@ Scope {
         running: root.isPlaying && root.activePlayer !== null
         repeat: true
         onTriggered: {
-            if (root.activePlayer && root.activePlayer.position !== undefined) {
-                root.trackPosition = root.activePlayer.position / 1000000.0;
-            } else if (root.lastFetchTime > 0) {
+            if (!fetchPos.running) {
+                fetchPos.running = true;
+            }
+            if (root.lastFetchTime > 0) {
                 var elapsed = (Date.now() - root.lastFetchTime) / 1000.0;
                 root.trackPosition = root.lastFetchedPosition + elapsed;
             }
