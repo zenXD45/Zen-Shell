@@ -819,7 +819,7 @@ Scope {
                        root.displayState === 4 ? 540 :
                        root.displayState === 3 ? 780 :
                        root.displayState === 2 ? 200 :
-                       root.displayState === 1 ? (root.isExpanded ? 360 : (root.currentLyricLine !== "" ? Math.min(540, Math.max(340, lyricMeasure.implicitWidth + 90)) : 340)) :
+                       root.displayState === 1 ? (root.isExpanded ? 360 : (root.currentLyricLine !== "" ? Math.min(540, Math.max(340, lyricMeasure.implicitWidth + 90)) : Math.min(460, Math.max(280, titleMeasure.implicitWidth + 120)))) :
                        80
 
                 height: root.displayState === 23 ? 600 :
@@ -857,6 +857,15 @@ Scope {
                     font.family: "Outfit"
                     font.pixelSize: 13
                     font.weight: Font.Medium
+                }
+                
+                Text {
+                    id: titleMeasure
+                    visible: false
+                    text: root.trackTitle || "Nothing Playing"
+                    font.family: "Outfit"
+                    font.pixelSize: 14
+                    font.bold: true
                 }
 
                 // ==================== Pill ====================

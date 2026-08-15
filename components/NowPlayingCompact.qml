@@ -38,6 +38,7 @@ RowLayout {
     ColumnLayout {
         Layout.fillWidth: true
         spacing: 2
+        clip: true
         visible: !root.lyricsMode || root.currentLyricLine === ""
         Text {
             Layout.fillWidth: true
