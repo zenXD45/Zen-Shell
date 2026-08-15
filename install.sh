@@ -1,11 +1,11 @@
 #!/bin/bash
 # Zen Shell - One-Click Installation Script
-# https://github.com/YOUR_USERNAME/zenshell
+# https://github.com/zenXD45/Zen-Shell
 
 set -e
 
 # --- Colors and Formatting ---
-RED='\03.2[0;31m'
+RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
@@ -88,7 +88,7 @@ if [ -d "$INSTALL_DIR" ]; then
 fi
 
 # --- Clone Repository ---
-REPO_URL="https://github.com/zenXD45/Zen-Shell.git" # TODO: Replace with your actual repo
+REPO_URL="https://github.com/zenXD45/Zen-Shell.git"
 print_info "Cloning Zen Shell repository..."
 
 # If the script is already inside the downloaded repo, we just copy it.
