@@ -35,34 +35,28 @@ RowLayout {
         }
     }
 
-    Item {
+    Column {
         Layout.fillWidth: true
-        Layout.fillHeight: true
-        visible: !root.lyricsMode || root.currentLyricLine === ""
+        spacing: 2
         clip: true
-
-        Column {
-            anchors.verticalCenter: parent.verticalCenter
+        visible: !root.lyricsMode || root.currentLyricLine === ""
+        
+        Text {
             width: parent.width
-            spacing: 2
-            
-            Text {
-                width: parent.width
-                text: root.trackTitle || "Nothing Playing"
-                color: "#FFFFFF"
-                font.family: "Outfit"
-                font.pixelSize: 14
-                font.bold: true
-                elide: Text.ElideRight
-            }
-            Text {
-                width: parent.width
-                text: root.trackArtist || "Unknown"
-                color: "#99FFFFFF"
-                font.family: "Outfit"
-                font.pixelSize: 11
-                elide: Text.ElideRight
-            }
+            text: root.trackTitle || "Nothing Playing"
+            color: "#FFFFFF"
+            font.family: "Outfit"
+            font.pixelSize: 14
+            font.bold: true
+            elide: Text.ElideRight
+        }
+        Text {
+            width: parent.width
+            text: root.trackArtist || "Unknown"
+            color: "#99FFFFFF"
+            font.family: "Outfit"
+            font.pixelSize: 11
+            elide: Text.ElideRight
         }
     }
 
