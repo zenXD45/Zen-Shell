@@ -60,7 +60,9 @@ git clone https://github.com/zenXD45/Zen-Shell.git ~/.config/quickshell/dynamic-
 
 ## ⚙️ Hyprland Integration
 
-Once installed, you must tell Hyprland to launch Zen Shell on boot. Add the following lines to your `hyprland.conf` (or your Lua equivalent):
+Once installed, you must tell Hyprland to launch Zen Shell on boot. Add the following lines to your configuration depending on whether you use the standard `.conf` or a Lua-based setup.
+
+### Standard `hyprland.conf`
 
 ```ini
 # Start the background daemon monitors
@@ -70,10 +72,23 @@ exec-once = ~/.config/quickshell/dynamic-island/start_monitors.sh
 exec-once = quickshell -p ~/.config/quickshell/dynamic-island
 ```
 
+### Lua Configuration (e.g. `hyprland-lua`)
+
+If you use a Lua-based Hyprland config, use the `hl.exec_cmd()` function instead:
+
+```lua
+-- Start the background daemon monitors
+hl.exec_cmd("~/.config/quickshell/dynamic-island/start_monitors.sh")
+
+-- Launch the Quickshell UI
+hl.exec_cmd("quickshell -p ~/.config/quickshell/dynamic-island")
+```
+
 ### Keybind Setup
 
-You can bind the different modules to whatever keys you prefer! Here is a recommended configuration:
+You can bind the different modules to whatever keys you prefer! 
 
+**Standard `.conf` bindings:**
 ```ini
 # App Launcher
 bind = SUPER, Space, exec, ~/.config/quickshell/dynamic-island/island_ctl.sh launcher
@@ -89,6 +104,15 @@ bind = SUPER_SHIFT, N, exec, ~/.config/quickshell/dynamic-island/island_ctl.sh c
 
 # Power Menu
 bind = SUPER, Escape, exec, ~/.config/quickshell/dynamic-island/island_ctl.sh power
+```
+
+**Lua bindings:**
+```lua
+hl.bind("SUPER", "Space", "exec", "~/.config/quickshell/dynamic-island/island_ctl.sh launcher")
+hl.bind("SUPER", "comma", "exec", "~/.config/quickshell/dynamic-island/island_ctl.sh cheatsheet")
+hl.bind("SUPER", "V", "exec", "~/.config/quickshell/dynamic-island/island_ctl.sh clipboard")
+hl.bind("SUPER_SHIFT", "N", "exec", "~/.config/quickshell/dynamic-island/island_ctl.sh control_center")
+hl.bind("SUPER", "Escape", "exec", "~/.config/quickshell/dynamic-island/island_ctl.sh power")
 ```
 
 ## 🛠️ Directory Structure
