@@ -616,7 +616,7 @@ Scope {
 
     Process {
         id: fetchPos
-        command: ["bash", "-c", "playerctl position 2>/dev/null || echo 0"]
+        command: ["bash", "-c", "for p in $(playerctl -l 2>/dev/null); do if [ \"$(playerctl -p \"$p\" status 2>/dev/null)\" = \"Playing\" ]; then playerctl -p \"$p\" position 2>/dev/null; exit 0; fi; done; playerctl position 2>/dev/null || echo 0"]
         stdout: SplitParser {
             onRead: data => { 
                 root.trackPosition = parseFloat(data.trim()) || 0; 
