@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Zen Shell 🏝️</h1>
-  <p><b>A highly modular, ultra-sleek, glassmorphic Dynamic Island built for Hyprland using Quickshell.</b></p>
+  <p><b>A complete, ultra-sleek, glassmorphic Desktop Shell Suite (Dynamic Island, Dock, Spotlight Search & Desktop Widgets) built for Hyprland using Quickshell.</b></p>
   
   <p>
     <img src="https://img.shields.io/badge/Desktop-Hyprland-blue?style=for-the-badge&logo=linux" alt="Hyprland" />
@@ -11,17 +11,18 @@
 
 ---
 
-Zen Shell brings the premium feel of a Dynamic Island to your Linux desktop, blending seamlessly into your workflow with ultra-smooth animations, a modular backend, and a stunning glassmorphic UI.
+Zen Shell brings a unified, modern desktop experience to your Linux environment. It combines an interactive **Dynamic Island**, a glassmorphic **Application Dock**, a macOS-style **Spotlight Search**, and customizable **Desktop Widgets**.
 
-## ✨ Features
+## ✨ Suite Features
 
-- **Interactive Dynamic Island**: Automatically expands for Now Playing media, active Notifications, and precise Volume/Brightness OSD controls.
-- **App Launcher**: Instant search through all your `.desktop` entries with a clean, grid-based layout.
-- **Control Center**: Seamless toggles for Wi-Fi, Bluetooth, Caffeine mode, and Microphone muting, all synchronized perfectly with your system in real-time.
-- **Keybinds Cheatsheet**: A live, searchable index of your `hyprland` shortcuts, dynamically mapped to clean, human-readable actions.
-- **Clipboard Manager**: Powered by `cliphist`, view and decode your recent clipboard history instantly.
-- **Wallpaper & Theme Selectors**: Change your entire system's aesthetic on the fly.
-- **Python-Powered Backend**: Heavy lifting (network scanning, lyrics fetching, clipboard decoding) is offloaded to fast, modular Python scripts stored neatly in the `scripts/` directory.
+- **Interactive Dynamic Island**: Live Now Playing media, lyrics sync, active Notifications, and smooth Volume/Brightness OSD controls.
+- **Glassmorphic Dock**: Interactive bottom taskbar with active window indicators and application shortcuts.
+- **Spotlight Search**: Fast, center-screen fuzzy application finder.
+- **Desktop Widgets & Clock**: Sleek wallpaper-integrated widgets for Weather, System Stats, and Time.
+- **Control Center**: System toggles for Wi-Fi, Bluetooth, Caffeine mode, and Microphone muting in real-time.
+- **Keybinds Cheatsheet**: Live, searchable index of your `hyprland` shortcuts mapped to clean actions.
+- **Clipboard Manager**: Powered by `cliphist`, view and decode recent clipboard history instantly.
+- **Wallpaper & Theme Selectors**: Change your system's aesthetic on the fly.
 
 ## 📸 Previews
 
@@ -65,23 +66,17 @@ Once installed, you must tell Hyprland to launch Zen Shell on boot. Add the foll
 ### Standard `hyprland.conf`
 
 ```ini
-# Start the background daemon monitors
-exec-once = ~/.config/quickshell/dynamic-island/start_monitors.sh
-
-# Launch the Quickshell UI
-exec-once = quickshell -p ~/.config/quickshell/dynamic-island
+# Start the full Zen Shell Desktop Suite on boot
+exec-once = ~/.config/quickshell/dynamic-island/start_all.sh
 ```
 
 ### Lua Configuration (e.g. `hyprland-lua`)
 
-If you use a Lua-based Hyprland config, use the `hl.exec_cmd()` function instead:
+If you use a Lua-based Hyprland config:
 
 ```lua
--- Start the background daemon monitors
-hl.exec_cmd("~/.config/quickshell/dynamic-island/start_monitors.sh")
-
--- Launch the Quickshell UI
-hl.exec_cmd("quickshell -p ~/.config/quickshell/dynamic-island")
+-- Start the full Zen Shell Desktop Suite on boot
+hl.exec_cmd("~/.config/quickshell/dynamic-island/start_all.sh")
 ```
 
 ### Keybind Setup

@@ -109,8 +109,9 @@ fi
 
 # Ensure scripts are executable
 chmod +x "$INSTALL_DIR"/*.sh
-chmod +x "$INSTALL_DIR"/scripts/*.sh
-chmod +x "$INSTALL_DIR"/scripts/*.py
+chmod +x "$INSTALL_DIR"/scripts/*.sh 2>/dev/null || true
+chmod +x "$INSTALL_DIR"/scripts/*.py 2>/dev/null || true
+find "$INSTALL_DIR"/modules -type f \( -name "*.sh" -o -name "*.py" \) -exec chmod +x {} + 2>/dev/null || true
 
 print_success "Zen Shell installed successfully!"
 
@@ -119,11 +120,11 @@ echo ""
 echo -e "${CYAN}${BOLD}==========================================${NC}"
 echo -e "${GREEN}Installation Complete!${NC}"
 echo ""
-echo -e "To start Zen Shell automatically, add this to your ${BOLD}hyprland.conf${NC} (or hyprland lua config):"
-echo -e "${YELLOW}exec-once = ~/.config/quickshell/dynamic-island/start_monitors.sh${NC}"
-echo -e "${YELLOW}exec-once = quickshell -p ~/.config/quickshell/dynamic-island${NC}"
+echo -e "To start the entire Zen Shell Desktop Suite automatically, add this to your ${BOLD}hyprland.conf${NC} (or hyprland lua config):"
+echo -e "${YELLOW}exec-once = ~/.config/quickshell/dynamic-island/start_all.sh${NC}"
 echo ""
-echo -e "To launch the App Launcher, bind a key to:"
-echo -e "${YELLOW}~/.config/quickshell/dynamic-island/island_ctl.sh launcher${NC}"
+echo -e "Keybindings example:"
+echo -e "  ${BOLD}App Launcher:${NC}      ${YELLOW}~/.config/quickshell/dynamic-island/island_ctl.sh launcher${NC}"
+echo -e "  ${BOLD}Spotlight Search:${NC}  ${YELLOW}quickshell -p ~/.config/quickshell/dynamic-island/modules/spotlight${NC}"
 echo -e "${CYAN}${BOLD}==========================================${NC}"
 echo ""
